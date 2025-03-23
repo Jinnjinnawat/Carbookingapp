@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "95935923587",
+    "firebase_url": "https://carbookingse800-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "carbookingse800",
+    "storage_bucket": "carbookingse800.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95935923587:android:adc7bf2469d675b46e62b6",
+        "android_client_info": {
+          "package_name": "com.example.carbooking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK_KxsgXDBUv81LquHRpzLN1UznX52P-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95935923587:android:37b5078efea199c06e62b6",
+        "android_client_info": {
+          "package_name": "com.example.carbookingapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK_KxsgXDBUv81LquHRpzLN1UznX52P-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
