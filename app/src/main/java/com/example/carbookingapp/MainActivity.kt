@@ -1,5 +1,4 @@
 package com.example.carbookingapp
-import HomeFragment
 import CarFragment
 import LoginFragment
 import android.os.Bundle
@@ -23,6 +22,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.home -> HomeFragment()
                 R.id.search -> CarFragment()
                 R.id.profile -> LoginFragment()
+                R.id.register_button -> RegisterFragment()
                 else -> null
             }
 
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
+            .replace(R.id.fragment_container, fragment) // ใช้ Fra
             .commit()
     }
 }

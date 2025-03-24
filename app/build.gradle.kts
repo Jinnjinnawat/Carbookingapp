@@ -48,6 +48,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(platform("com.google.firebase:firebase-bom:33.11.0"))
     implementation("com.google.firebase:firebase-analytics")
-
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5") // หรือเวอร์ชันล่าสุด
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
 
 }

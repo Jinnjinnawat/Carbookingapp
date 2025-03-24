@@ -60,6 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ลงทะเบียน"
+        android:layout_below="@id/login_button"
 
         android:textColor="@android:color/white"/>
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/registerFragment">
+
+    <!-- Fragment สำหรับการลงทะเบียน -->
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.carbookingapp.RegisterFragment"
+        android:label="RegisterFragment" />
+
+    <!-- Fragment สำหรับหน้า Home -->
+    <fragment
+        android:id="@+id/fragment_home"
+        android:name="com.example.carbookingapp.HomeFragment"
+        android:label="HomeFragment" />
+
+    <!-- การเชื่อมต่อระหว่าง RegisterFragment และ HomeFragment -->
+    <action
+        android:id="@+id/action_registerFragment_to_homeFragment"
+        app:destination="@id/fragment_home" />
+
+</navigation>

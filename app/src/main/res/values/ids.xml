@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="register_first_name_edit_text" type="id" />
+    <item name="register_last_name_edit_text" type="id" />
+    <item name="register_email_edit_text" type="id" />
+    <item name="register_password_edit_text" type="id" />
+    <item name="register_address_edit_text" type="id" />
+    <item name="register_phone_edit_text" type="id" />
+    <item name="register_confirm_button" type="id" />
+    <item name="action_registerFragment_to_homeFragment" type="id" />
+    <item name="homeFragment" type="id" />
+    <item name="registerFragment" type="id" />
+    <item name="fragment_container" type="id" />
+</resources>
