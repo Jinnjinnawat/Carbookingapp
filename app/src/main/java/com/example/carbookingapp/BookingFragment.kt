@@ -1,13 +1,19 @@
 package com.example.carbookingapp
+
+import CarFragment
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.FirebaseFirestore
-import com.example.carbookingapp.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 class BookingFragment : Fragment() {
 
@@ -25,16 +31,13 @@ class BookingFragment : Fragment() {
     private lateinit var bookButton: Button
 
     override fun onCreateView(
-
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_booking, container, false)
 
-        // Initialize Firestore
         firestore = FirebaseFirestore.getInstance()
 
-        // Initialize views
         nameEditText = view.findViewById(R.id.nameEditText)
         surnameEditText = view.findViewById(R.id.surnameEditText)
         startDateEditText = view.findViewById(R.id.startDateEditText)
@@ -46,7 +49,9 @@ class BookingFragment : Fragment() {
         carIdEditText = view.findViewById(R.id.carIdEditText)
         totalCostEditText = view.findViewById(R.id.totalCostEditText)
         bookButton = view.findViewById(R.id.bookButton)
-        // Set click listener for the book button
+
+        setupDateTimePickers()
+
         bookButton.setOnClickListener {
             saveBookingToFirestore()
         }
@@ -54,40 +59,163 @@ class BookingFragment : Fragment() {
         return view
     }
 
+    private fun setupDateTimePickers() {
+        val calendar = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+
+        startDateEditText.setOnClickListener {
+            DatePickerDialog(requireContext(), { _, year, month, dayOfMonth ->
+                calendar.set(year, month, dayOfMonth)
+                startDateEditText.setText(dateFormat.format(calendar.time))
+            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
+
+        startTimeEditText.setOnClickListener {
+            TimePickerDialog(requireContext(), { _, hourOfDay, minute ->
+                calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
+                calendar.set(Calendar.MINUTE, minute)
+                startTimeEditText.setText(timeFormat.format(calendar.time))
+            }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show()
+        }
+
+        endDateEditText.setOnClickListener {
+            DatePickerDialog(requireContext(), { _, year, month, dayOfMonth ->
+                calendar.set(year, month, dayOfMonth)
+                endDateEditText.setText(dateFormat.format(calendar.time))
+            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show()
+        }
+
+        endTimeEditText.setOnClickListener {
+            TimePickerDialog(requireContext(), { _, hourOfDay, minute ->
+                calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
+                calendar.set(Calendar.MINUTE, minute)
+                endTimeEditText.setText(timeFormat.format(calendar.time))
+            }, calendar.get(Calendar.HOUR_OF_DAY), calendar.get(Calendar.MINUTE), false).show()
+        }
+    }
+
     private fun saveBookingToFirestore() {
-        val name = nameEditText.text.toString()
-        val surname = surnameEditText.text.toString()
-        val startDate = startDateEditText.text.toString()
-        val startTime = startTimeEditText.text.toString()
-        val phone = phoneEditText.text.toString()
-        val endDate = endDateEditText.text.toString()
-        val endTime = endTimeEditText.text.toString()
-        val carModel = carModelEditText.text.toString()
-        val carId = carIdEditText.text.toString()
-        val totalCost = totalCostEditText.text.toString().toDouble()
 
-        val booking = hashMapOf(
-            "name" to name,
-            "surname" to surname,
-            "startDate" to startDate,
-            "startTime" to startTime,
-            "phone" to phone,
-            "endDate" to endDate,
-            "endTime" to endTime,
-            "carModel" to carModel,
-            "carId" to carId,
-            "totalCost" to totalCost
-        )
+        val name = nameEditText.text.toString().trim()
 
-        firestore.collection("bookings")
-            .add(booking)
-            .addOnSuccessListener {
-                // Booking saved successfully
-                // You can add code to show a success message here
-            }
-            .addOnFailureListener { e ->
-                // Handle errors
-                // You can add code to show an error message here
-            }
+        val surname = surnameEditText.text.toString().trim()
+
+        val startDate = startDateEditText.text.toString().trim()
+
+        val startTime = startTimeEditText.text.toString().trim()
+
+        val phone = phoneEditText.text.toString().trim()
+
+        val endDate = endDateEditText.text.toString().trim()
+
+        val endTime = endTimeEditText.text.toString().trim()
+
+        val carModel = carModelEditText.text.toString().trim()
+
+        val carId = carIdEditText.text.toString().trim()
+
+        val totalCost = totalCostEditText.text.toString().trim()
+
+
+
+        if (name.isEmpty() || surname.isEmpty() || startDate.isEmpty() || startTime.isEmpty() ||
+
+            phone.isEmpty() || endDate.isEmpty() || endTime.isEmpty() || carModel.isEmpty() ||
+
+            carId.isEmpty() || totalCost.isEmpty()
+
+        ) {
+
+            Toast.makeText(requireContext(), "กรุณากรอกข้อมูลให้ครบถ้วน", Toast.LENGTH_SHORT).show()
+
+            return
+
+        }
+
+
+
+        try {
+
+            val booking = hashMapOf(
+
+                "name" to name,
+
+                "surname" to surname,
+
+                "startDate" to startDate,
+
+                "startTime" to startTime,
+
+                "phone" to phone,
+
+                "endDate" to endDate,
+
+                "endTime" to endTime,
+
+                "carModel" to carModel,
+
+                "carId" to carId,
+
+                "totalCost" to totalCost.toDouble()
+
+            )
+
+
+
+            firestore.collection("bookings")
+
+                .add(booking)
+
+                .addOnSuccessListener {
+
+                    Toast.makeText(requireContext(), "บันทึกการจองสำเร็จ", Toast.LENGTH_SHORT).show()
+                    navigateToCarFragment()
+                    clearInputs()
+
+                }
+
+                .addOnFailureListener { e ->
+
+                    Toast.makeText(requireContext(), "เกิดข้อผิดพลาดในการบันทึก: ${e.message}", Toast.LENGTH_SHORT).show()
+
+                }
+
+        } catch (e: NumberFormatException) {
+
+            Toast.makeText(requireContext(), "ค่าเช่าทั้งหมดต้องเป็นตัวเลข", Toast.LENGTH_SHORT).show()
+
+        }
+
+    }
+    private fun clearInputs() {
+
+        nameEditText.text.clear()
+
+        surnameEditText.text.clear()
+
+        startDateEditText.text.clear()
+
+        startTimeEditText.text.clear()
+
+        phoneEditText.text.clear()
+
+        endDateEditText.text.clear()
+
+        endTimeEditText.text.clear()
+
+        carModelEditText.text.clear()
+
+        carIdEditText.text.clear()
+
+        totalCostEditText.text.clear()
+
+    }
+    private fun navigateToCarFragment() {
+        val carFragment = CarFragment()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, carFragment)
+            .addToBackStack(null)
+            .commit()
     }
 }
