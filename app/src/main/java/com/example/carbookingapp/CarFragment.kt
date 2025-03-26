@@ -52,7 +52,10 @@ class CarFragment : Fragment() {
     private fun openBookingFragment(car: Car) {
         val fragment = BookingFragment().apply {
             arguments = Bundle().apply {
-                putParcelable("selectedCar", car) // ส่งข้อมูลรถไปยัง BookingFragment
+                putString("model", car.model)
+                putString("brand", car.brand)
+                putString("licensePlate", car.license_plate)
+                putString("price_per_day", car.price_per_day)
             }
         }
         parentFragmentManager.beginTransaction()
