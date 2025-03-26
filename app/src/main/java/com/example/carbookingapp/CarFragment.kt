@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.example.carbookingapp.R
-
+import com.example.carbookingapp.BookingFragment
 
 class CarFragment : Fragment() {
 
@@ -20,7 +20,6 @@ class CarFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.car_fragment, container, false)
     }
 
@@ -31,11 +30,12 @@ class CarFragment : Fragment() {
         carRecyclerView.layoutManager = LinearLayoutManager(context)
 
         carList = mutableListOf()
-        carAdapter = CarAdapter(carList)
+        carAdapter = CarAdapter(carList) { selectedCar ->
+            openBookingFragment(selectedCar) // เรียกฟังก์ชันเปิด BookingFragment พร้อมข้อมูลรถ
+        }
         carRecyclerView.adapter = carAdapter
 
         db = FirebaseFirestore.getInstance()
-
         db.collection("cars").get()
             .addOnSuccessListener { result ->
                 for (document in result) {
@@ -48,4 +48,18 @@ class CarFragment : Fragment() {
                 // จัดการ Error
             }
     }
+
+    private fun openBookingFragment(car: Car) {
+        val fragment = BookingFragment().apply {
+            arguments = Bundle().apply {
+                putParcelable("selectedCar", car) // ส่งข้อมูลรถไปยัง BookingFragment
+            }
+        }
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+
 }

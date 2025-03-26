@@ -1,3 +1,4 @@
+package com.example.carbookingapp
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.carbookingapp.MainActivity
 import com.example.carbookingapp.R
 import com.example.carbookingapp.RegisterFragment
+import com.example.carbookingapp.BookingFragment
 
 class LoginFragment : Fragment() {
 
@@ -17,7 +19,7 @@ class LoginFragment : Fragment() {
     private lateinit var passwordEditText: EditText
     private lateinit var loginButton: Button
     private lateinit var regButton: Button
-
+    private lateinit var rentCar: Button
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,7 +34,7 @@ class LoginFragment : Fragment() {
         passwordEditText = view.findViewById(R.id.password_edit_text)
         loginButton = view.findViewById(R.id.login_button)
         regButton = view.findViewById(R.id.register_button)
-
+        rentCar = view.findViewById(R.id.rentCarButton)
         loginButton.setOnClickListener {
             validateAndLogin()
         }
@@ -44,6 +46,7 @@ class LoginFragment : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
+
     }
 
     private fun validateAndLogin() {

@@ -11,4 +11,16 @@
     <item name="homeFragment" type="id" />
     <item name="registerFragment" type="id" />
     <item name="fragment_container" type="id" />
+    <item name="nameEditText" type="id" />
+    <item name="surnameEditText" type="id" />
+    <item name="startDateEditText" type="id" />
+    <item name="startTimeEditText" type="id" />
+    <item name="phoneEditText" type="id" />
+    <item name="endDateEditText" type="id" />
+    <item name="endTimeEditText" type="id" />
+    <item name="carModelEditText" type="id" />
+    <item name="carIdEditText" type="id" />
+    <item name="totalCostEditText" type="id" />
+    <item name="bookButton" type="id" />
+    <item name="fragmentContainer" type="id" />
 </resources>

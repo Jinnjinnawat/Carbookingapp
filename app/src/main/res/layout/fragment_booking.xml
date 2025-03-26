@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ชื่อ" />
+
+        <EditText
+            android:id="@+id/surnameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="นามสกุล" />
+
+        <EditText
+            android:id="@+id/startDateEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="วันที่เริ่มต้น (yyyy-MM-dd)" />
+
+        <EditText
+            android:id="@+id/startTimeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="เวลาเริ่มต้น (HH:mm)" />
+
+        <EditText
+            android:id="@+id/phoneEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="เบอร์โทรศัพท์" />
+
+        <EditText
+            android:id="@+id/endDateEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="วันที่สิ้นสุด (yyyy-MM-dd)" />
+
+        <EditText
+            android:id="@+id/endTimeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="เวลาสิ้นสุด (HH:mm)" />
+
+        <EditText
+            android:id="@+id/carModelEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="รุ่นรถ" />
+
+        <EditText
+            android:id="@+id/carIdEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="รหัสรถ" />
+
+        <EditText
+            android:id="@+id/totalCostEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ค่าเช่าทั้งหมด"
+            android:inputType="numberDecimal" />
+
+        <Button
+            android:id="@+id/bookButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="จอง" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>ห
