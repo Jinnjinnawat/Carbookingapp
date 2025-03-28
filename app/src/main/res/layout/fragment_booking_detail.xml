@@ -1,82 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:layout_marginTop="16dp"
+    android:layout_height="match_parent"
     tools:context="BookingDetailFragment">
 
-    <TextView
-        android:id="@+id/text_view_car_model"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="รุ่น: "
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        android:layout_centerInParent="true">
 
-    <TextView
-        android:id="@+id/text_view_license_plate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ทะเบียน: "
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <TextView
-        android:id="@+id/text_view_name_surname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ชื่อ-นามสกุล: "
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/text_view_car_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="รุ่น: Honda e:N1 "
+                android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/text_view_total_cost"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ค่าใช้จ่าย: "
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/text_view_license_plate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="ทะเบียน: 9999 ชลบุรี "
+                android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/text_view_start_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="วันที่เริ่ม: "
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/text_view_name_surname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="ชื่อ-นามสกุล: jinnawat yeamtup"
+                android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/text_view_start_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="เวลาเริ่ม: "
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/text_view_total_cost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="ค่าใช้จ่าย: 4200"
+                android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/text_view_end_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="วันที่สิ้นสุด: "
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/text_view_start_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="วันที่เริ่ม: 2025-04-05"
+                android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/text_view_end_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="เวลาสิ้นสุด: "
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp"/>
+            <TextView
+                android:id="@+id/text_view_start_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="เวลาเริ่ม: 20:29 "
+                android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/text_view_status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="สถานะ: "
-        android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/text_view_end_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="วันที่สิ้นสุด: 2025-04-12 "
+                android:textSize="16sp" />
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/text_view_end_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="เวลาสิ้นสุด: 20:29 "
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/text_view_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="สถานะ: อนุมัติเช่า "
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/button_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="เช่ารถ" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
