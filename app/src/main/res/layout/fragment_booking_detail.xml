@@ -1,73 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="16dp"
-    android:layout_marginTop="80dp"
+    android:layout_marginTop="16dp"
     tools:context="BookingDetailFragment">
 
     <TextView
         android:id="@+id/text_view_car_model"
-        android:layout_width="282dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Car Model"
-        android:textSize="16sp" />
+        android:text="รุ่น: "
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/text_view_license_plate"
-        android:layout_width="284dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="License Plate"
-        android:textSize="16sp" />
+        android:text="ทะเบียน: "
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/text_view_name_surname"
-        android:layout_width="283dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name Surname"
-        android:textSize="16sp" />
+        android:text="ชื่อ-นามสกุล: "
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/text_view_total_cost"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Total Cost"
-        android:textSize="16sp" />
+        android:text="ค่าใช้จ่าย: "
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/text_view_start_date"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start Date"
-        android:textSize="16sp" />
+        android:text="วันที่เริ่ม: "
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/text_view_start_time"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start Time"
-        android:textSize="16sp" />
+        android:text="เวลาเริ่ม: "
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/text_view_end_date"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="End Date"
-        android:textSize="16sp" />
+        android:text="วันที่สิ้นสุด: "
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/text_view_end_time"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="End Time"
-        android:textSize="16sp" />
+        android:text="เวลาสิ้นสุด: "
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
         android:id="@+id/text_view_status"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Status"
-        android:textSize="16sp" />
+        android:text="สถานะ: "
+        android:textSize="16sp"/>
+
 </LinearLayout>
