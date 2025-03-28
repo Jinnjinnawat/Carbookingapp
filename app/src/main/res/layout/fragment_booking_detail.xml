@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/text_view_car_model"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Car Model"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_view_license_plate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="License Plate"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_view_name_surname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name Surname"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_view_total_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Cost"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_view_start_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Date"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_view_start_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Time"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_view_end_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="End Date"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_view_end_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="End Time"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/text_view_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status"
+        android:textSize="16sp" />
+</LinearLayout>

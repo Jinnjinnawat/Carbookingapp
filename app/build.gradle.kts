@@ -35,21 +35,30 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    buildFeatures {
+        viewBinding = true // เปิดใช้งาน View Binding
+    }
 }
 
 dependencies {
-
-    implementation("com.squareup.picasso:picasso:2.71828")
+    // AndroidX Components
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5") // หรือเวอร์ชันล่าสุด
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
+    implementation("com.android.volley:volley:1.2.1")
+    // Firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.11.0"))
+    implementation("com.google.firebase:firebase-analytics")
     implementation(libs.firebase.firestore)
+
+    // Third-party libraries
+    implementation("com.squareup.picasso:picasso:2.71828")
+
+    // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(platform("com.google.firebase:firebase-bom:33.11.0"))
-    implementation("com.google.firebase:firebase-analytics")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5") // หรือเวอร์ชันล่าสุด
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
-
 }

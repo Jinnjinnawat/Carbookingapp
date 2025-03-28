@@ -23,4 +23,23 @@
     <item name="totalCostEditText" type="id" />
     <item name="bookButton" type="id" />
     <item name="fragmentContainer" type="id" />
+    <item name="paymentButton" type="id" />
+    <item name="endTimeTextView" type="id" />
+    <item name="endDateTextView" type="id" />
+    <item name="startTimeTextView" type="id" />
+    <item name="startDateTextView" type="id" />
+    <item name="totalCostTextView" type="id" />
+    <item name="nameSurnameTextView" type="id" />
+    <item name="carModelTextView" type="id" />
+    <item name="text_view_car_model" type="id" />
+    <item name="text_view_license_plate" type="id" />
+    <item name="text_view_name_surname" type="id" />
+    <item name="text_view_total_cost" type="id" />
+    <item name="text_view_start_date" type="id" />
+    <item name="text_view_start_time" type="id" />
+    <item name="text_view_end_date" type="id" />
+    <item name="text_view_end_time" type="id" />
+    <item name="text_view_status" type="id" />
+    <item name="button_pay" type="id" />
+    <item name="recycler_view_bookings" type="id" />
 </resources>

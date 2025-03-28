@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
 
         bottomNav.setOnItemSelectedListener { item ->
             val selectedFragment: Fragment? = when (item.itemId) {
-                R.id.home -> HomeFragment()
-                R.id.search -> CarFragment()
+                R.id.home -> CarFragment()
+                R.id.search -> BookingDetailFragment()
                 R.id.profile -> LoginFragment()
                 R.id.register_button -> RegisterFragment()
                 else -> null

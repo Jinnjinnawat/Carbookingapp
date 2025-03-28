@@ -1,91 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_bookings"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Booking"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/nameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:hint="Name"
+        android:layout_marginBottom="8dp"/>
 
-        <EditText
-            android:id="@+id/nameEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="ชื่อ" />
+    <EditText
+        android:id="@+id/surnameEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Surname"
+        android:layout_marginBottom="8dp"/>
 
-        <EditText
-            android:id="@+id/surnameEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="นามสกุล" />
+    <EditText
+        android:id="@+id/startDateEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Start Date (yyyy-MM-dd)"
+        android:inputType="date"
+        android:focusable="false"
+        android:layout_marginBottom="8dp"/>
 
-        <EditText
-            android:id="@+id/startDateEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="วันที่เริ่มต้น (yyyy-MM-dd)"
-            android:focusable="false"
-            android:clickable="true" />
+    <EditText
+        android:id="@+id/startTimeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Start Time (HH:mm)"
+        android:inputType="time"
+        android:focusable="false"
+        android:layout_marginBottom="8dp"/>
 
-        <EditText
-            android:id="@+id/startTimeEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="เวลาเริ่มต้น (HH:mm)"
-            android:focusable="false"
-            android:clickable="true"/>
+    <EditText
+        android:id="@+id/endDateEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="End Date (yyyy-MM-dd)"
+        android:inputType="date"
+        android:focusable="false"
+        android:layout_marginBottom="8dp"/>
 
-        <EditText
-            android:id="@+id/phoneEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="เบอร์โทรศัพท์" />
+    <EditText
+        android:id="@+id/endTimeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="End Time (HH:mm)"
+        android:inputType="time"
+        android:focusable="false"
+        android:layout_marginBottom="8dp"/>
 
-        <EditText
-            android:id="@+id/endDateEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="วันที่สิ้นสุด (yyyy-MM-dd)"
-            android:focusable="false"
-            android:clickable="true"/>
+    <EditText
+        android:id="@+id/phoneEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone"
+        android:inputType="phone"
+        android:layout_marginBottom="8dp"/>
 
-        <EditText
-            android:id="@+id/endTimeEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="เวลาสิ้นสุด (HH:mm)"
-            android:focusable="false"
-            android:clickable="true"/>
+    <EditText
+        android:id="@+id/carModelEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Car Model"
+        android:inputType="text"
+        android:layout_marginBottom="8dp"/>
 
-        <EditText
-            android:id="@+id/carModelEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="รุ่นรถ" />
+    <EditText
+        android:id="@+id/carIdEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Car ID"
+        android:inputType="text"
+        android:layout_marginBottom="8dp"/>
 
-        <EditText
-            android:id="@+id/carIdEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="รหัสรถ" />
+    <EditText
+        android:id="@+id/totalCostEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Total Cost"
+        android:inputType="numberDecimal"
+        android:focusable="false"
+        android:layout_marginBottom="16dp"/>
 
-        <EditText
-            android:id="@+id/totalCostEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="ค่าเช่าทั้งหมด"
-            android:inputType="numberDecimal" />
-
-        <Button
-            android:id="@+id/bookButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="จอง" />
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/bookButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Book Now" />
 
 </LinearLayout>
