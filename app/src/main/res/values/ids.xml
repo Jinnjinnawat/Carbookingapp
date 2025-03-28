@@ -42,4 +42,13 @@
     <item name="text_view_status" type="id" />
     <item name="button_pay" type="id" />
     <item name="recycler_view_bookings" type="id" />
+    <item name="tvCarModel" type="id" />
+    <item name="tvStartDate" type="id" />
+    <item name="tvStartTime" type="id" />
+    <item name="tvEndDate" type="id" />
+    <item name="tvEndTime" type="id" />
+    <item name="tvLicensePlate" type="id" />
+    <item name="tvName" type="id" />
+    <item name="tvSurname" type="id" />
+    <item name="tvStatus" type="id" />
 </resources>

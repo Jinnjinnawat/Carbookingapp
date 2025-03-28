@@ -1,6 +1,7 @@
 package com.example.carbookingapp
 
 import Booking
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -46,40 +47,50 @@ class BookingDetailFragment : Fragment() {
         return view
     }
 
+    // Function to set booking ID from the activity/adapter
     fun setBookingId(bookingId: String) {
         fetchBookingDetails(bookingId)
     }
 
     private fun fetchBookingDetails(bookingId: String) {
+        Log.d("BookingDetailFragment", "Fetching booking details for ID: $bookingId")
         firestore.collection("bookings")
-            .document(bookingId)
+            .document(bookingId)  // Use the booking ID here
             .get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
                     val booking = document.toObject(Booking::class.java)
                     if (booking != null) {
+                        // Access the document ID using document.id
+                        val bookingDocumentId = document.id
+                        Log.d("BookingDetailFragment", "Booking documentId: $bookingDocumentId")
                         displayBookingDetails(booking)
                     } else {
+                        Log.e("BookingDetailFragment", "Error: Booking data is null")
                         Toast.makeText(context, "Error: Booking data is null", Toast.LENGTH_SHORT).show()
                     }
                 } else {
+                    Log.e("BookingDetailFragment", "Error: Booking not found")
                     Toast.makeText(context, "Error: Booking not found", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener { exception ->
+                Log.e("BookingDetailFragment", "Error fetching booking details: ${exception.message}", exception)
                 Toast.makeText(context, "Error fetching booking details: ${exception.message}", Toast.LENGTH_SHORT).show()
-                Log.e("BookingDetailFragment", "Error fetching booking: ", exception)
             }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun displayBookingDetails(booking: Booking) {
-        carModelTextView.text = "รุ่นรถ: ${booking.carModel}"
+        // Set data to TextViews from Booking object
+        carModelTextView.text = "รุ่น: ${booking.carModel}"
         licensePlateTextView.text = "ทะเบียน: ${booking.licensePlate}"
-        nameSurnameTextView.text = "ชื่อ: ${booking.name} ${booking.surname}"
+        nameSurnameTextView.text = "ชื่อ-นามสกุล: ${booking.name} ${booking.surname}"
         totalCostTextView.text = "ค่าใช้จ่าย: ${booking.totalCost}"
         startDateTextView.text = "วันที่เริ่ม: ${booking.startDate}"
         startTimeTextView.text = "เวลาเริ่ม: ${booking.startTime}"
         endDateTextView.text = "วันที่สิ้นสุด: ${booking.endDate}"
-        endTimeTextView.text = "สถานะ: ${booking.status}"
+        endTimeTextView.text = "เวลาสิ้นสุด: ${booking.endTime}"
+        statusTextView.text = "สถานะ: ${booking.status}"
     }
 }

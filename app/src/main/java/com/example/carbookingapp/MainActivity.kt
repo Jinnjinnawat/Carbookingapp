@@ -1,5 +1,6 @@
 package com.example.carbookingapp
 import CarFragment
+import CarRentalDetailsFragment
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment

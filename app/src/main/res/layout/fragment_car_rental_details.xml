@@ -1,78 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:layout_marginBottom="8dp">
+    android:padding="16dp">
 
     <TextView
-        android:id="@+id/text_view_car_model"
+        android:id="@+id/tvCarModel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Car Model"
+        android:text="Car Model: "
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvStartDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Date: "
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/text_view_license_plate"
+        android:id="@+id/tvStartTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="License Plate"
+        android:text="Start Time: "
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/text_view_name_surname"
+        android:id="@+id/tvEndDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name Surname"
+        android:text="End Date: "
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/text_view_total_cost"
+        android:id="@+id/tvEndTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total Cost"
+        android:text="End Time: "
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/text_view_start_date"
+        android:id="@+id/tvLicensePlate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Date"
+        android:text="License Plate: "
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/text_view_start_time"
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Time"
+        android:text="Name: "
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/text_view_end_date"
+        android:id="@+id/tvSurname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="End Date"
+        android:text="Surname: "
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/text_view_end_time"
+        android:id="@+id/tvStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="End Time"
+        android:text="Status: "
         android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/text_view_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Status"
-        android:textSize="16sp" />
-
-    <Button
-        android:id="@+id/button_pay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pay"
-        android:visibility="gone" />
 </LinearLayout>

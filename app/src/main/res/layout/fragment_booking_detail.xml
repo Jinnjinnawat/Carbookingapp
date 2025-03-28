@@ -2,26 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:layout_marginTop="80dp"
+    tools:context="BookingDetailFragment">
 
     <TextView
         android:id="@+id/text_view_car_model"
-        android:layout_width="wrap_content"
+        android:layout_width="282dp"
         android:layout_height="wrap_content"
         android:text="Car Model"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/text_view_license_plate"
-        android:layout_width="wrap_content"
+        android:layout_width="284dp"
         android:layout_height="wrap_content"
         android:text="License Plate"
         android:textSize="16sp" />
 
     <TextView
         android:id="@+id/text_view_name_surname"
-        android:layout_width="wrap_content"
+        android:layout_width="283dp"
         android:layout_height="wrap_content"
         android:text="Name Surname"
         android:textSize="16sp" />

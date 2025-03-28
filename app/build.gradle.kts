@@ -53,7 +53,7 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.11.0"))
     implementation("com.google.firebase:firebase-analytics")
     implementation(libs.firebase.firestore)
-
+    implementation("com.google.firebase:firebase-database-ktx:20.3.0")
     // Third-party libraries
     implementation("com.squareup.picasso:picasso:2.71828")
 

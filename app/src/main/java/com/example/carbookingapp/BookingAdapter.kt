@@ -2,6 +2,7 @@ package com.example.carbookingapp
 
 import Booking
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +11,9 @@ import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 
-// Adapter for RecyclerView
 class BookingAdapter(private val bookingList: ArrayList<Booking>) :
     RecyclerView.Adapter<BookingAdapter.BookingViewHolder>() {
 
-    // ViewHolder class
     class BookingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val carModel: TextView = itemView.findViewById(R.id.text_view_car_model)
         val licensePlate: TextView = itemView.findViewById(R.id.text_view_license_plate)
@@ -28,14 +27,12 @@ class BookingAdapter(private val bookingList: ArrayList<Booking>) :
         val payButton: Button = itemView.findViewById(R.id.button_pay)
     }
 
-    // Create ViewHolder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookingViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.booking_item, parent, false) // R.layout.booking_item is your item layout
+            .inflate(R.layout.fragment_booking_detail, parent, false)
         return BookingViewHolder(itemView)
     }
 
-    // Bind data to ViewHolder
     override fun onBindViewHolder(holder: BookingViewHolder, position: Int) {
         val booking = bookingList[position]
         holder.carModel.text = "รุ่นรถ: ${booking.carModel}"
@@ -48,17 +45,12 @@ class BookingAdapter(private val bookingList: ArrayList<Booking>) :
         holder.endTime.text = "เวลาสิ้นสุด: ${booking.endTime}"
         holder.status.text = "สถานะ: ${booking.status}"
 
-        // Handle pay button visibility and click
         if (booking.status == "approve") {
             holder.payButton.visibility = View.VISIBLE
             holder.payButton.setOnClickListener {
-                // Handle payment logic here (e.g., navigate to payment screen)
-                // You might use an interface or callback to communicate with the fragment
-                // Example:
                 val bookingDetailFragment = BookingDetailFragment()
-                //bookingDetailFragment.setBooking(booking)
                 val bundle = Bundle()
-                bundle.putString("bookingId", booking.documentId) // Assuming you have documentId in Booking
+                bundle.putString("bookingId", booking.documentId) // Pass the documentId to the fragment
                 bookingDetailFragment.arguments = bundle
                 (holder.itemView.context as FragmentActivity).supportFragmentManager.beginTransaction()
                     .replace(R.id.fragment_container, bookingDetailFragment)
@@ -70,7 +62,6 @@ class BookingAdapter(private val bookingList: ArrayList<Booking>) :
         }
     }
 
-    // Return item count
     override fun getItemCount(): Int {
         return bookingList.size
     }
