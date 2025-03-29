@@ -1,15 +1,20 @@
 package com.example.carbookingapp
 
 import Booking
+import CarFragment
+import PaymentFragment
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.firestore.FirebaseFirestore
 
 class BookingDetailFragment : Fragment() {
@@ -43,7 +48,17 @@ class BookingDetailFragment : Fragment() {
         statusTextView = view.findViewById(R.id.text_view_status)
 
         firestore = FirebaseFirestore.getInstance()
+        val actionButton: Button = view.findViewById(R.id.button_action)
+        actionButton.setOnClickListener {
+            val rentalConfirmationFragment = PaymentFragment()
 
+            // ใช้ FragmentTransaction เพื่อแทนที่ Fragment ปัจจุบัน
+            val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragment_container, rentalConfirmationFragment)
+            fragmentTransaction.addToBackStack(null) // เพิ่ม Fragment ลงใน back stack (optional)
+            fragmentTransaction.commit()
+        }
         return view
     }
 

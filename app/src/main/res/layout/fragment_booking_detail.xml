@@ -4,15 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="BookingDetailFragment">
+    android:layout_marginTop="80dp"
+    tools:context="BookingDetailFragment"
+    >
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewBookingDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_margin="16dp"
         app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        android:layout_centerInParent="true">
+        app:cardElevation="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="รุ่น: Honda e:N1 "
+                android:text="รุ่น: Honda e:N1"
                 android:textSize="16sp" />
 
             <TextView
@@ -33,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="ทะเบียน: 9999 ชลบุรี "
+                android:text="ทะเบียน: 9999 ชลบุรี"
                 android:textSize="16sp" />
 
             <TextView
@@ -65,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="เวลาเริ่ม: 20:29 "
+                android:text="เวลาเริ่ม: 20:29"
                 android:textSize="16sp" />
 
             <TextView
@@ -73,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="วันที่สิ้นสุด: 2025-04-12 "
+                android:text="วันที่สิ้นสุด: 2025-04-12"
                 android:textSize="16sp" />
 
             <TextView
@@ -81,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="เวลาสิ้นสุด: 20:29 "
+                android:text="เวลาสิ้นสุด: 20:29"
                 android:textSize="16sp" />
 
             <TextView
@@ -89,7 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="สถานะ: อนุมัติเช่า "
+                android:text="สถานะ: อนุมัติเช่า"
                 android:textSize="16sp" />
 
             <Button
