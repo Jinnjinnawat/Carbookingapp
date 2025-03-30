@@ -6,7 +6,7 @@
         android:title="หน้าหลัก" />
     <item
         android:id="@+id/search"
-        android:icon="@drawable/baseline_directions_car_24"
+        android:icon="@drawable/search"
         android:title="ค้นหา" />
     <item
         android:id="@+id/profile"
