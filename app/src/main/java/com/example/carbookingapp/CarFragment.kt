@@ -125,6 +125,11 @@ class CarFragment : Fragment() {
                     startDateButton.text = dateText
                 } else {
                     endDateButton.text = dateText
+                    // ตรวจสอบว่าวันที่สิ้นสุดไม่น้อยกว่าวันที่เริ่มต้น
+                    if (endDate.timeInMillis < startDate.timeInMillis) {
+                        Toast.makeText(requireContext(), "วันที่สิ้นสุดต้องไม่น้อยกว่าวันที่เริ่มต้น", Toast.LENGTH_SHORT).show()
+                        endDateButton.text = startDateButton.text // ตั้งค่าวันที่สิ้นสุดเป็นวันที่เริ่มต้น
+                    }
                 }
                 fetchAvailableCars()
             },
@@ -132,6 +137,14 @@ class CarFragment : Fragment() {
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH)
         )
+
+        if (isStart) {
+            datePickerDialog.datePicker.minDate = System.currentTimeMillis() - 1000
+        } else {
+            // กำหนดวันที่ต่ำสุดเป็นวันที่เริ่มต้น
+            datePickerDialog.datePicker.minDate = startDate.timeInMillis
+        }
+
         datePickerDialog.show()
     }
 
@@ -145,6 +158,20 @@ class CarFragment : Fragment() {
                     startTimeButton.text = timeText
                 } else {
                     endTimeButton.text = timeText
+                    // ตรวจสอบว่าเวลาสิ้นสุดไม่น้อยกว่าเวลาเริ่มต้น (หากวันที่เท่ากัน)
+                    val endTime = Calendar.getInstance()
+                    endTime.timeInMillis = calendar.timeInMillis
+                    val startTime = Calendar.getInstance()
+                    startTime.timeInMillis = startDate.timeInMillis
+                    if (endDate.timeInMillis == startDate.timeInMillis && endTime.timeInMillis < startTime.timeInMillis) {
+                        Toast.makeText(requireContext(), "เวลาสิ้นสุดต้องไม่น้อยกว่าเวลาเริ่มต้น", Toast.LENGTH_SHORT).show()
+                        endTimeButton.text = startTimeButton.text // ตั้งค่าเวลาสิ้นสุดเป็นเวลาเริ่มต้น
+                    }
+                    // ตรวจสอบว่าวันเวลาสิ้นสุดไม่น้อยกว่าวันเวลาเริ่มต้น
+                    else if (endDate.timeInMillis < startDate.timeInMillis) {
+                        Toast.makeText(requireContext(), "วันเวลาสิ้นสุดต้องไม่น้อยกว่าวันเวลาเริ่มต้น", Toast.LENGTH_SHORT).show()
+                        endTimeButton.text = startTimeButton.text // ตั้งค่าเวลาสิ้นสุดเป็นเวลาเริ่มต้น
+                    }
                 }
                 fetchAvailableCars()
             },
@@ -181,11 +208,35 @@ class CarFragment : Fragment() {
         return try {
             val dateTimeString = "$date $time"
             val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
-            val date = sdf.parse(dateTimeString)
-            Timestamp(date!!)
+            val parsedDate = sdf.parse(dateTimeString)
+
+            if (parsedDate != null) {
+                val selectedCalendar = Calendar.getInstance()
+                selectedCalendar.time = parsedDate
+
+                if (startDateButton.text.isNotEmpty() && startDateButton.text.toString() == SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Calendar.getInstance().time)) {
+                    val currentCalendar = Calendar.getInstance()
+                    if (selectedCalendar.timeInMillis < currentCalendar.timeInMillis) {
+                        Toast.makeText(requireContext(), "ไม่สามารถเลือกเวลาที่ผ่านมาได้", Toast.LENGTH_SHORT).show()
+                        return null
+                    }
+                }
+                // ตรวจสอบว่าวันเวลาสิ้นสุดไม่น้อยกว่าวันเวลาเริ่มต้น
+                val startDateCalendar = Calendar.getInstance()
+                val startDateString = startDateButton.text.toString() + " " + startTimeButton.text.toString()
+                val startDateParsedDate = sdf.parse(startDateString)
+                if (startDateParsedDate != null && selectedCalendar.timeInMillis < startDateParsedDate.time) {
+                    Toast.makeText(requireContext(), "วันเวลาสิ้นสุดต้องไม่น้อยกว่าวันเวลาเริ่มต้น", Toast.LENGTH_SHORT).show()
+                    return null
+                }
+                return Timestamp(parsedDate)
+            } else {
+                return null
+            }
+
         } catch (e: Exception) {
             Log.e("CarFragment", "Error parsing date time", e)
-            null
+            return null
         }
     }
 }

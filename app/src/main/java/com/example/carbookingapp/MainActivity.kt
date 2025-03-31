@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation)
 
         // กำหนด Fragment เริ่มต้น
-        loadFragment(CarFragment()) //หรือจะ load home fragment ก็ได้
+        loadFragment(LoginFragment()) //หรือจะ load home fragment ก็ได้
 
         bottomNav.setOnItemSelectedListener { item ->
             val selectedFragment: Fragment? = when (item.itemId) {
