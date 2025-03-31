@@ -56,6 +56,7 @@ dependencies {
     implementation("com.google.firebase:firebase-database-ktx:20.3.0")
     // Third-party libraries
     implementation("com.squareup.picasso:picasso:2.71828")
+    implementation ("com.google.firebase:firebase-auth:22.1.2")
 
     // Testing
     testImplementation(libs.junit)

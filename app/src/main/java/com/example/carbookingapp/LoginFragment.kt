@@ -73,6 +73,13 @@ class LoginFragment : Fragment() {
             .get()
             .addOnSuccessListener { documents ->
                 if (!documents.isEmpty) {
+                    val document = documents.documents[0]
+                    val userId = document.id // เก็บ user ID ของ Firebase Firestore
+
+                    // บันทึก user ID ใน SharedPreferences
+                    val sharedPreferences = requireActivity().getSharedPreferences("user_prefs", 0)
+                    sharedPreferences.edit().putString("user_id", userId).apply()
+
                     navigateToHomeFragment()
                 } else {
                     Toast.makeText(requireContext(), "อีเมลหรือรหัสผ่านไม่ถูกต้อง", Toast.LENGTH_SHORT).show()

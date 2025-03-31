@@ -51,4 +51,7 @@
     <item name="tvName" type="id" />
     <item name="tvSurname" type="id" />
     <item name="tvStatus" type="id" />
+    <item name="first_name_text" type="id" />
+    <item name="last_name_text" type="id" />
+    <item name="phone_text" type="id" />
 </resources>

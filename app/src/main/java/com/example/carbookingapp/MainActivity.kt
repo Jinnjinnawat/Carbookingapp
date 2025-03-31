@@ -1,6 +1,7 @@
 package com.example.carbookingapp
 import CarFragment
 import CarRentalDetailsFragment
+
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             val selectedFragment: Fragment? = when (item.itemId) {
                 R.id.home -> CarFragment()
                 R.id.search -> BookingDetailFragment()
-                R.id.profile -> LoginFragment()
+                R.id.profile -> ProfileFragment()
                 R.id.register_button -> RegisterFragment()
                 else -> null
             }
