@@ -1,9 +1,10 @@
 package com.example.carbookingapp
 
 import Booking
-import CarFragment
 import PaymentFragment
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -48,39 +49,53 @@ class BookingDetailFragment : Fragment() {
         statusTextView = view.findViewById(R.id.text_view_status)
 
         firestore = FirebaseFirestore.getInstance()
+
         val actionButton: Button = view.findViewById(R.id.button_action)
         actionButton.setOnClickListener {
-            val rentalConfirmationFragment = PaymentFragment()
-
-            // ใช้ FragmentTransaction เพื่อแทนที่ Fragment ปัจจุบัน
-            val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
-            val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.fragment_container, rentalConfirmationFragment)
-            fragmentTransaction.addToBackStack(null) // เพิ่ม Fragment ลงใน back stack (optional)
-            fragmentTransaction.commit()
+            val paymentFragment = PaymentFragment()
+            navigateToFragment(paymentFragment)
         }
+
+        val viewMapButton: Button = view.findViewById(R.id.button_view_map)
+        viewMapButton.setOnClickListener {
+            val latitude = 37.7749 // ตัวอย่าง latitude (เปลี่ยนเป็นค่าจริง)
+            val longitude = -122.4194 // ตัวอย่าง longitude (เปลี่ยนเป็นค่าจริง)
+
+            val gmmIntentUri = Uri.parse("geo:$latitude,$longitude?q=$latitude,$longitude(Location)")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+
+            if (mapIntent.resolveActivity(requireActivity().packageManager) != null) {
+                startActivity(mapIntent)
+            } else {
+                Toast.makeText(context, "Google Maps is not installed", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         return view
     }
 
-    // Function to set booking ID from the activity/adapter
+    private fun navigateToFragment(fragment: Fragment) {
+        val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_container, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
+    }
+
     fun setBookingId(bookingId: String) {
         fetchBookingDetails(bookingId)
     }
 
     private fun fetchBookingDetails(bookingId: String) {
         Log.d("BookingDetailFragment", "Fetching booking details for ID: $bookingId")
-        firestore.collection("bookings")
-            .document(bookingId)  // Use the booking ID here
-            .get()
+        firestore.collection("bookings").document(bookingId).get()
             .addOnSuccessListener { document ->
                 if (document.exists()) {
-                    val booking = document.toObject(Booking::class.java)
-                    if (booking != null) {
-                        // Access the document ID using document.id
-                        val bookingDocumentId = document.id
-                        Log.d("BookingDetailFragment", "Booking documentId: $bookingDocumentId")
+                    document.toObject(Booking::class.java)?.let { booking ->
                         displayBookingDetails(booking)
-                    } else {
+                        Log.d("BookingDetailFragment", "Booking documentId: ${document.id}")
+                    } ?: run {
                         Log.e("BookingDetailFragment", "Error: Booking data is null")
                         Toast.makeText(context, "Error: Booking data is null", Toast.LENGTH_SHORT).show()
                     }
@@ -97,7 +112,6 @@ class BookingDetailFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun displayBookingDetails(booking: Booking) {
-        // Set data to TextViews from Booking object
         carModelTextView.text = "รุ่น: ${booking.carModel}"
         licensePlateTextView.text = "ทะเบียน: ${booking.licensePlate}"
         nameSurnameTextView.text = "ชื่อ-นามสกุล: ${booking.name} ${booking.surname}"

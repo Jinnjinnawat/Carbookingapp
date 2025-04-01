@@ -175,11 +175,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="ดูแผนที่" />
-            <Button
-                android:id="@+id/button_rent_car"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="เช่ารถ" />
 
         </LinearLayout>
 
