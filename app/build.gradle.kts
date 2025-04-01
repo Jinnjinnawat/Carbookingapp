@@ -42,6 +42,11 @@ android {
 }
 
 dependencies {
+    dependencies {
+        implementation ("com.github.bumptech.glide:glide:4.15.1")
+        annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+    }
+
     // AndroidX Components
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -58,6 +63,9 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation ("com.google.firebase:firebase-auth:22.1.2")
     implementation ("androidx.cardview:cardview:1.0.0")
+    implementation ("com.google.android.gms:play-services-maps:18.1.0")
+    implementation ("com.google.zxing:core:3.5.1")
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

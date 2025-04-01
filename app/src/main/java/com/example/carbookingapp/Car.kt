@@ -7,7 +7,7 @@ data class Car(
     val model: String = "",
     val license_plate: String = "",
     val price_per_day: String = "",
-    val status: String = "",
+    var status: String = "",
     val img_car: String = "",
     // เพิ่ม year กลับมา
 ) : Parcelable

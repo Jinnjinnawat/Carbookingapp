@@ -40,7 +40,13 @@ class RegisterFragment : Fragment() {
 
         registerButton.setOnClickListener {
             registerUser()
+            val fragment = LoginFragment()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
+                .commit()
         }
+
 
         return view
     }
@@ -72,10 +78,13 @@ class RegisterFragment : Fragment() {
             .add(user)
             .addOnSuccessListener {
                 Toast.makeText(context, "ลงทะเบียนสำเร็จ", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
+
             }
             .addOnFailureListener { e ->
                 Toast.makeText(context, "เกิดข้อผิดพลาด: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
+
+    // ย้ายฟังก์ชันนี้เข้าไปใน RegisterFragment
+
 }

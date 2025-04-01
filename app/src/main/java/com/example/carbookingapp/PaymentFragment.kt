@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.FirebaseFirestore
 import com.example.carbookingapp.R
+import com.example.carrental.MapQrFragment
+
 class PaymentFragment : Fragment() {
 
     private var carModel: String = ""
@@ -43,7 +45,6 @@ class PaymentFragment : Fragment() {
 
         db = FirebaseFirestore.getInstance()
 
-        // ดึงข้อมูลจาก arguments
         arguments?.let {
             carModel = it.getString("carModel", "")
             customerName = it.getString("customerName", "")
@@ -52,7 +53,6 @@ class PaymentFragment : Fragment() {
             totalCost = it.getDouble("totalCost", 0.0)
         }
 
-        // แสดงข้อมูลบน UI
         textCarModel.text = "Car Model: $carModel"
         textCustomerName.text = "Customer Name: $customerName"
         textStartDate.text = "Start Date: $startDate"
@@ -63,10 +63,6 @@ class PaymentFragment : Fragment() {
             val selectedPaymentMethodId = radioGroupPayment.checkedRadioButtonId
             val selectedPaymentMethod = view.findViewById<RadioButton>(selectedPaymentMethodId)?.text.toString()
 
-            // ดำเนินการชำระเงินโดยใช้ selectedPaymentMethod
-            // ...
-
-            // ส่งข้อมูลการชำระเงินไปยัง Firebase (ตัวอย่าง)
             val paymentData = hashMapOf(
                 "carModel" to carModel,
                 "customerName" to customerName,
@@ -77,11 +73,15 @@ class PaymentFragment : Fragment() {
             )
 
             db.collection("payments").add(paymentData)
-                .addOnSuccessListener { documentReference ->
-                    // สำเร็จ
+                .addOnSuccessListener {
+                    val mapQrFragment = MapQrFragment()
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, mapQrFragment)
+                        .addToBackStack(null)
+                        .commit()
                 }
-                .addOnFailureListener { e ->
-                    // ล้มเหลว
+                .addOnFailureListener {
+                    // แสดงข้อความแจ้งเตือนหากเกิดข้อผิดพลาด
                 }
         }
 

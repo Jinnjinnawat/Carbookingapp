@@ -88,13 +88,22 @@ class CarFragment : Fragment() {
                 allCars.forEach { car ->
                     db.collection("bookings")
                         .whereEqualTo("carModel", car.model)
-                        .whereGreaterThanOrEqualTo("endDate", startDateTimestamp)
-                        .whereLessThanOrEqualTo("startDate", endDateTimestamp)
+                        .whereLessThan("startDate", endDateTimestamp) // ตรวจสอบช่วงทับซ้อน
+                        .whereGreaterThan("endDate", startDateTimestamp) // ตรวจสอบช่วงทับซ้อน
                         .get()
                         .addOnSuccessListener { bookingResult ->
-                            if (bookingResult.isEmpty) {
+                            // เช็คสถานะการจอง
+                            val isBooked = bookingResult.documents.isNotEmpty()
+                            val status = when {
+                                isBooked -> "approve"
+                                else -> "Not approved"
+                            }
+                            car.status = status
+
+                            if (!isBooked) {
                                 availableCars.add(car)
                             }
+
                             if (allCars.size == availableCars.size + bookingResult.size()) {
                                 carList.clear()
                                 carList.addAll(availableCars)
