@@ -5,14 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="80dp"
-    tools:context="BookingDetailFragment"
-    >
+    tools:context="BookingDetailFragment">
+
+    <TextView
+        android:id="@+id/text_view_booking_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ประวัติการเช่า"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewBookingDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/text_view_booking_history"
         android:layout_margin="16dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp">
@@ -97,6 +107,76 @@
 
             <Button
                 android:id="@+id/button_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="เช่ารถ" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewMapDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardViewBookingDetails"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/text_view_map_car_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="รุ่น: Honda e:N1"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/text_view_map_license_plate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="ทะเบียน: 9999 ชลบุรี"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/text_view_map_start_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="วันที่เริ่ม: 2025-04-05"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/text_view_map_start_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="เวลาเริ่ม: 20:29"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/text_view_status_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="สถานะ:ชำระเงินแล้ว"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/button_view_map"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ดูแผนที่" />
+            <Button
+                android:id="@+id/button_rent_car"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="เช่ารถ" />
