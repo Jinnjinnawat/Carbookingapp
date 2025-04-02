@@ -1,3 +1,5 @@
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +11,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.FirebaseFirestore
 import com.example.carbookingapp.R
-import com.example.carrental.MapQrFragment
 
 class PaymentFragment : Fragment() {
 
@@ -74,18 +75,22 @@ class PaymentFragment : Fragment() {
 
             db.collection("payments").add(paymentData)
                 .addOnSuccessListener {
-                    val mapQrFragment = MapQrFragment()
-                    parentFragmentManager.beginTransaction()
-                        .replace(R.id.fragment_container, mapQrFragment)
-                        .addToBackStack(null)
-                        .commit()
+                    // Start Google Maps
+                    openGoogleMaps()
                 }
                 .addOnFailureListener {
-                    // แสดงข้อความแจ้งเตือนหากเกิดข้อผิดพลาด
+                    // Handle failure
                 }
         }
 
         return view
+    }
+
+    private fun openGoogleMaps() {
+        val gmmIntentUri = Uri.parse("geo:0,0?q=ร้านรถเช่า ศรีราชา ชลบุรี") // Replace with your desired location
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        startActivity(mapIntent)
     }
 
     companion object {

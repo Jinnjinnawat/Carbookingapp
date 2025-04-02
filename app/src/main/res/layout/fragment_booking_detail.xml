@@ -62,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:text="ค่าใช้จ่าย: 4200"
+                android:text="จำนวนเงินทั้งหมด: 4200"
                 android:textSize="16sp" />
 
             <TextView
@@ -109,7 +109,7 @@
                 android:id="@+id/button_action"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="เช่ารถ" />
+                android:text="ชำระเงิน" />
 
         </LinearLayout>
 

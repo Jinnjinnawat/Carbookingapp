@@ -58,10 +58,8 @@ class BookingDetailFragment : Fragment() {
 
         val viewMapButton: Button = view.findViewById(R.id.button_view_map)
         viewMapButton.setOnClickListener {
-            val latitude = 37.7749 // ตัวอย่าง latitude (เปลี่ยนเป็นค่าจริง)
-            val longitude = -122.4194 // ตัวอย่าง longitude (เปลี่ยนเป็นค่าจริง)
 
-            val gmmIntentUri = Uri.parse("geo:$latitude,$longitude?q=$latitude,$longitude(Location)")
+            val gmmIntentUri = Uri.parse("geo:0,0?q=ร้านรถเช่า ศรีราชา ชลบุรี")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")
 
@@ -74,7 +72,12 @@ class BookingDetailFragment : Fragment() {
 
         return view
     }
-
+    private fun openGoogleMaps() {
+        val gmmIntentUri = Uri.parse("geo:0,0?q=ร้านรถเช่า ศรีราชา ชลบุรี") // Replace with your desired location
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        startActivity(mapIntent)
+    }
     private fun navigateToFragment(fragment: Fragment) {
         val fragmentManager: FragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()

@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Booking"
+        android:text="เช่ารถ"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginBottom="8dp"/>
@@ -26,21 +26,21 @@
         android:id="@+id/nameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name"
+        android:hint="ชื่อ"
         android:layout_marginBottom="8dp"/>
 
     <EditText
         android:id="@+id/surnameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Surname"
+        android:hint="นามสกุล"
         android:layout_marginBottom="8dp"/>
 
     <EditText
         android:id="@+id/startDateEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Start Date (yyyy-MM-dd)"
+        android:hint="วันที่เริ่มต้น"
         android:inputType="date"
         android:focusable="false"
         android:layout_marginBottom="8dp"/>
@@ -49,7 +49,7 @@
         android:id="@+id/startTimeEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Start Time (HH:mm)"
+        android:hint="เวลาเริ่มต้น "
         android:inputType="time"
         android:focusable="false"
         android:layout_marginBottom="8dp"/>
@@ -58,7 +58,7 @@
         android:id="@+id/endDateEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="End Date (yyyy-MM-dd)"
+        android:hint="วันที่สิ้นสุด "
         android:inputType="date"
         android:focusable="false"
         android:layout_marginBottom="8dp"/>
@@ -67,7 +67,7 @@
         android:id="@+id/endTimeEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="End Time (HH:mm)"
+        android:hint="เวลาสิ้นสุด"
         android:inputType="time"
         android:focusable="false"
         android:layout_marginBottom="8dp"/>
@@ -76,7 +76,7 @@
         android:id="@+id/phoneEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Phone"
+        android:hint="เบอร์โทรศัพท์"
         android:inputType="phone"
         android:layout_marginBottom="8dp"/>
 
@@ -84,7 +84,7 @@
         android:id="@+id/carModelEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Car Model"
+        android:hint="รุ่นรถ"
         android:inputType="text"
         android:layout_marginBottom="8dp"/>
 
@@ -92,7 +92,7 @@
         android:id="@+id/carIdEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Car ID"
+        android:hint="รุ่นรถ"
         android:inputType="text"
         android:layout_marginBottom="8dp"/>
 
@@ -100,7 +100,7 @@
         android:id="@+id/totalCostEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Total Cost"
+        android:hint="ราคาทั้งหมด"
         android:inputType="numberDecimal"
         android:focusable="false"
         android:layout_marginBottom="16dp"/>
@@ -109,6 +109,6 @@
         android:id="@+id/bookButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Book Now" />
+        android:text="เช่ารถ" />
 
 </LinearLayout>

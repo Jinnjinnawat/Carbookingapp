@@ -21,6 +21,7 @@ class RegisterFragment : Fragment() {
     private lateinit var phoneEditText: TextInputEditText
     private lateinit var registerButton: Button
     private lateinit var db: FirebaseFirestore
+    private lateinit var licenseNoEditText: TextInputEditText // เพิ่ม licenseNoEditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +36,7 @@ class RegisterFragment : Fragment() {
         addressEditText = view.findViewById(R.id.register_address_edit_text)
         phoneEditText = view.findViewById(R.id.register_phone_edit_text)
         registerButton = view.findViewById(R.id.register_confirm_button)
+        licenseNoEditText = view.findViewById(R.id.register_license_no_edit_text) // Initialize licenseNoEditText
 
         db = FirebaseFirestore.getInstance()
 
@@ -47,7 +49,6 @@ class RegisterFragment : Fragment() {
                 .commit()
         }
 
-
         return view
     }
 
@@ -58,8 +59,9 @@ class RegisterFragment : Fragment() {
         val password = passwordEditText.text.toString().trim()
         val address = addressEditText.text.toString().trim()
         val phone = phoneEditText.text.toString().trim()
+        val licenseNo = licenseNoEditText.text.toString().trim() // ดึงค่า licenseNo
 
-        if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || address.isEmpty() || phone.isEmpty()) {
+        if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || address.isEmpty() || phone.isEmpty() || licenseNo.isEmpty()) { // เพิ่ม licenseNo ในการตรวจสอบ
             Toast.makeText(context, "กรุณากรอกข้อมูลให้ครบถ้วน", Toast.LENGTH_SHORT).show()
             return
         }
@@ -71,6 +73,7 @@ class RegisterFragment : Fragment() {
             "password" to password,
             "address" to address,
             "phone" to phone,
+            "license_no" to licenseNo, // เพิ่ม licenseNo ลงใน user map
             "status" to "1"
         )
 
@@ -78,13 +81,9 @@ class RegisterFragment : Fragment() {
             .add(user)
             .addOnSuccessListener {
                 Toast.makeText(context, "ลงทะเบียนสำเร็จ", Toast.LENGTH_SHORT).show()
-
             }
             .addOnFailureListener { e ->
                 Toast.makeText(context, "เกิดข้อผิดพลาด: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
-
-    // ย้ายฟังก์ชันนี้เข้าไปใน RegisterFragment
-
 }

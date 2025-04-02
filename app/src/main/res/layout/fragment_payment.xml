@@ -24,35 +24,35 @@
                 android:id="@+id/text_car_model"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Car Model: "
+                android:text="รุ่นรถ: Honda e:N1 "
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/text_customer_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Customer Name: "
+                android:text="ชื่อ-นามสกุล:จิณณวัตร แย้มทับ"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/text_start_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Start Date: "
+                android:text="เวลาเริ่มเช่า: 2025-04-05"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/text_end_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="End Date: "
+                android:text="วันสุดท้ายการเช่า:2025-04-12"
                 android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/text_total_cost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Cost: "
+                android:text="จำนวนเงินทั้งหมด:4200"
                 android:textSize="18sp" />
 
         </LinearLayout>
